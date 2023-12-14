@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Post} from '@nestjs/common';
+import {Body, Controller, Get, Logger, Post} from '@nestjs/common';
 import {OptimizationService} from './optimization.service';
 import {
     AccSpec,
@@ -17,18 +17,23 @@ export class AppController {
     constructor(private readonly appService: OptimizationService) {
     }
 
+    private readonly logger = new Logger(AppController.name)
+
     private last_result?: OptimizationResult<string>;
 
     @Post("optimize")
     public async optimize(@Body() params: OptimizationParameters<string>) {
+        this.logger.log("POST")
         const deserializedParams = transformParameters(params, stringToDay);
         this.last_result = transformResult(await this.appService.optimize(deserializedParams), dayToString);
         // this.last_result = transformResult<Dayjs, string>(await this.appService.optimize(parametersExample), dayToString);
+        this.logger.log("POST done")
         return this.last_result;
     }
 
     @Get("optimize")
     public async get_result(@Body() params: OptimizationParameters<string>) {
+        this.logger.log("GET")
         return this.last_result;
     }
 

@@ -208,7 +208,7 @@ export class OptimizationService {
                 }))
 
         // solve
-        model.intopt({presolve: true});
+        model.intopt({presolve: true, limitTime: 10*1000});
 
         const result = this.getResult(
             x => x?.statusMIP,

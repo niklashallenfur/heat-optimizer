@@ -19,6 +19,7 @@ export interface AccSpec {
     current_temp: number;
     min_temp: number;
     max_temp: number;
+    radiator_flow_temp_above_acc_avg_temp?: number;
 }
 
 export interface Shower<TTime> {

@@ -79,7 +79,7 @@ export class OptimizationService {
             .map(period => ({
                 ...period,
                 acc_min_temp: Math.max(
-                    period.rad_flow_temp,
+                    period.rad_flow_temp - (acc_spec.radiator_flow_temp_above_acc_avg_temp || 0),
                     hot_water.min_temp,
                     acc_spec.min_temp,
                     showerX.get_shower(period).temp)

@@ -1,16 +1,16 @@
 export interface PumpSpec {
-    start_delay_minutes: number,
+    start_delay_minutes: number;
     max_temp: number;
     power: {
-        below_degrees?: number
-        heating_power_watt: number
-        consumed_power_watt: number
+        below_degrees?: number;
+        heating_power_watt: number;
+        consumed_power_watt: number;
     }[];
 }
 
 export interface Forecast<TTime> {
     time: TTime;
-    temp: number
+    temp: number;
 }
 
 export interface AccSpec {
@@ -51,7 +51,7 @@ export interface HotWaterSpec {
 }
 
 export interface OptimizationParameters<TTime> {
-    time: TTime
+    time: TTime;
     split_hours_into: number;
     plan_hours: number;
     pump_spec: PumpSpec;
@@ -88,15 +88,15 @@ export interface PlannedPeriod<TTime> {
     outdoor_temp: number;
     rad_flow_temp: number;
     acc_temp: number;
-    pump: PumpPlan,
-    consumption: ConsumptionPlan
+    pump: PumpPlan;
+    consumption: ConsumptionPlan;
 }
 
 export interface OptimizationResult<TTime> {
     params: OptimizationParameters<TTime>;
     result: string;
     ok: boolean;
-    plan: PlannedPeriod<TTime> []
+    plan: PlannedPeriod<TTime>[];
 
-    cost: number
+    cost: number;
 }

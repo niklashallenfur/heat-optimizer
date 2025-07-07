@@ -9,3 +9,5 @@ services:
     restart: always
     environment:
       - TZ=Europe/Stockholm
+    network_mode: host
+

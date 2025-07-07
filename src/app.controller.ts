@@ -43,6 +43,7 @@ export class AppController {
     public async get_result() {
         this.logger.log("GET");
         if (this.last_result_error) {
+            console.error(this.last_result_error);
             throw this.last_result_error;
         }
 
